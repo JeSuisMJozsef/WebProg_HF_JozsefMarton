@@ -5,5 +5,11 @@
         <data xmlns="http://www.netbeans.org/ns/php-project/1">
             <name>Hf1</name>
         </data>
+        <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>elso</word>
+            <word>elsoelso</word>
+            <word>masadik</word>
+            <word>masadikmasadik</word>
+        </spellchecker-wordlist>
     </configuration>
 </project>
