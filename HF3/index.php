@@ -10,6 +10,9 @@ $product3 = new Product(3, "Samsung Galaxy S20", 3200, 10);
 $cart = new Cart();
 $cartItem1 = $cart->addProduct($product1, 1);
 $cartItem2 = $product2->addToCart($cart, 1);
+
+
+
 echo "Number of items in cart: ".PHP_EOL;
 echo $cart->getTotalQuantity().PHP_EOL; // This must print 2
 echo "Total price of items in cart: ".PHP_EOL;
@@ -24,7 +27,7 @@ echo $cart->getTotalQuantity().PHP_EOL; // This must print 4
 echo "Total price of items in cart: ".PHP_EOL;
 echo $cart->getTotalSum().PHP_EOL; // This must print 3700
 
-$cart->removeProduct($product1);
+//$cart->removeProduct($product1);
 
 echo "Number of items in cart: ".PHP_EOL;
 echo $cart->getTotalQuantity().PHP_EOL; // This must print 4

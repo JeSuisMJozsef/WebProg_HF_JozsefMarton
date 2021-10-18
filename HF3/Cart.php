@@ -7,8 +7,24 @@ class Cart
      * @var CartItem[]
      */
     private array $items = [];
+// TODO Generate getters and setters of properties
+    /**
+     * @return CartItem[]
+     */
+    public function getItems(): array
+    {
+        return $this->items;
+    }
 
-    // TODO Generate getters and setters of properties
+    /**
+     * @param CartItem[] $items
+     */
+
+    public function setItems(array $items): void
+    {
+        $this->items = $items;
+    }
+
 
     /**
      * Add Product $product into cart. If product already exists inside cart
@@ -20,10 +36,28 @@ class Cart
      * @param Product $product
      * @param int $quantity
      * @return CartItem
+     * @throws Exception
      */
     public function addProduct(Product $product, int $quantity): CartItem
     {
-        //TODO Implement method
+        $exists=true;
+        foreach ($this->items as $key=>$item){
+
+            if ($item->getProduct() === $product && $product->getAvailableQuantity()>=$quantity){
+                $item->increaseQuantity();
+                $exists=false;
+                return $item;
+
+            }
+        }
+//        if($product->getAvailableQuantity()<$quantity)
+//            throw new Exception("Quantity is greater than product available quantity");
+        if ($exists){
+            $ci=new CartItem($product,$quantity);
+            array_push($this->items,$ci);
+            return  $ci;
+        }
+
     }
 
     /**
@@ -33,7 +67,12 @@ class Cart
      */
     public function removeProduct(Product $product)
     {
-        //TODO Implement method
+        foreach ($this->items as $key=>$item){
+           if ($item->getProduct()===$product){
+               unset($this->items[$key]);
+           }
+
+        }
     }
 
     /**
@@ -43,7 +82,11 @@ class Cart
      */
     public function getTotalQuantity(): int
     {
-        //TODO Implement method
+        $sum=0;
+        foreach ($this->items as $item){
+            $sum+=$item->getQuantity();
+        }
+        return $sum;
     }
 
     /**
@@ -53,6 +96,12 @@ class Cart
      */
     public function getTotalSum(): float
     {
-        //TODO Implement method
+
+        $sum=0;
+
+        foreach ($this->items as $item){
+            $sum+=$item->getProduct()->getPrice()*$item->getQuantity();
+        }
+        return $sum;
     }
 }
