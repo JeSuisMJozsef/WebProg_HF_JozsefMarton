@@ -50,8 +50,8 @@ class Cart
 
             }
         }
-//        if($product->getAvailableQuantity()<$quantity)
-//            throw new Exception("Quantity is greater than product available quantity");
+        if($product->getAvailableQuantity()<$quantity)
+            throw new Exception("Quantity is greater than product available quantity");
         if ($exists){
             $ci=new CartItem($product,$quantity);
             array_push($this->items,$ci);
