@@ -8,7 +8,7 @@ if (isset($_GET['submit'])){
     $response_json = curl_exec($ch);
     curl_close($ch);
     $response=json_decode($response_json,true);
-    
+    echo "<a href='index.php'><h2>Back to home page</h2></a>";
     $total=0;
     foreach ($response as $item){
         foreach ($item['products'] as $product){
@@ -27,4 +27,7 @@ if (isset($_GET['submit'])){
     }
     
     echo "Total value of all carts:".$total;
+}
+else{
+    echo "<a href='index.php'><h2>Back to home page</h2></a>";
 }
